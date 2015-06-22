@@ -1,0 +1,19 @@
+<Location /server-status>
+  SetHandler server-status
+  <IfModule mod_authz_core.c>
+    Require local
+    <% if node[:carnegielearning][:local_nets] -%>
+    Require ip <%= node[:carnegielearning][:local_nets].join(' ') %>
+    <% end -%>
+  </IfModule>
+  <IfModule !mod_authz_core.c>
+    Order deny,allow
+    Deny from all
+    Allow from 127.0.0.1
+    <% if node[:carnegielearning][:local_nets] -%>
+    <% node[:carnegielearning][:local_nets].each do |net| -%>
+    Allow from <%= net %>
+    <% end -%>
+    <% end -%>
+  </IfModule>
+</Location>

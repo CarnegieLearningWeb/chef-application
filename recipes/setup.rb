@@ -14,7 +14,7 @@ else
   conf_dir = "#{node[:apache][:dir]}/conf.d"
 end
 
-['headers', 'logging'].each do |config|
+%w{cors expires headers logging mime msie status}.each do |config|
   template "#{conf_dir}/#{config}.conf" do
     source   "apache_#{config}.conf.erb"
     owner    'root'

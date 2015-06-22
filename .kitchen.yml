@@ -16,3 +16,7 @@ suites:
       - recipe[apt]
       - recipe[cli-application::setup]
     attributes:
+      carnegielearning:
+        local_nets:
+          - 10.0.0.0/24
+          - 192.168.1.1/24

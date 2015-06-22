@@ -1,0 +1,6 @@
+# IE Compatibility
+BrowserMatch MSIE ie
+Header set X-UA-Compatible IE=edge,chrome=1 env=ie
+<FilesMatch "\.(appcache|atom|crx|css|cur|eot|f4[abpv]|flv|gif|htc|ico|jpe?g|js|json(ld)?|m4[av]|manifest|map|mp4|oex|og[agv]|opus|otf|pdf|png|rdf|rss|safariextz|svgz?|swf|tt[cf]|txt|vcf|vtt|webapp|web[mp]|woff|xml|xpi)$">
+  Header unset X-UA-Compatible
+</FilesMatch>

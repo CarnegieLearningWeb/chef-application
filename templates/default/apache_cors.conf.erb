@@ -1,0 +1,10 @@
+# Allow cross-origin for web fonts
+<FilesMatch "\.(eot|otf|tt[cf]|woff)$">
+  Header set Access-Control-Allow-Origin "*"
+</FilesMatch>
+
+# Send CORS headers for images if the browser asks for it
+<FilesMatch "\.(cur|gif|ico|jpe?g|png|svgz?|webp)$">
+  SetEnvIf Origin ":" IS_CORS
+  Header set Access-Control-Allow-Origin "*" env=IS_CORS
+</FilesMatch>
